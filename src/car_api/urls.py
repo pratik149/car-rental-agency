@@ -2,6 +2,8 @@ from django.urls import path
 from car_api.views import car, reservation, customer
 
 urlpatterns = [
+    path('', car.home),
+
     path('customer/', customer.view_all_customers),
     path('customer/<int:pk>/', customer.view_customer_details),
     path('customer/add/', customer.add_customer),

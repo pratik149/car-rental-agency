@@ -2,10 +2,17 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 from car_api.models import Car
 from car_api.serializers import CarSerializer
 
+
+@api_view(['GET'])
+def home(request):
+    if request.method == 'GET':
+        data = [{'message':'Welcome to Car-Rental-Agency'}]
+        return JsonResponse(data, safe=False)
 
 @api_view(['GET'])
 def view_all_cars(request):
