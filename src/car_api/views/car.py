@@ -14,6 +14,7 @@ def home(request):
         data = [{'message':'Welcome to Car-Rental-Agency'}]
         return JsonResponse(data, safe=False)
 
+
 @api_view(['GET'])
 def view_all_cars(request):
     if request.method == 'GET':

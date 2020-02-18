@@ -16,5 +16,9 @@ urlpatterns = [
     path('car/update/<int:pk>/', car.edit_car_details),
     path('car/delete/<int:pk>/', car.delete_car),
 
-
+    path('reservation/', reservation.view_all_reservations),
+    path('reservation/<int:pk>/', reservation.view_reservation_details),
+    path('reservation/add/', reservation.add_reservation),
+    path('reservation/update/<int:pk>/', reservation.edit_reservation_details),
+    path('reservation/delete/<int:pk>/', reservation.delete_reservation),
 ]

@@ -15,4 +15,4 @@ class CarSerializer(serializers.ModelSerializer):
 class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
-        fields = ['car','issue_date','return_date']
+        fields = ['id','customer','car','issue_date','return_date']
