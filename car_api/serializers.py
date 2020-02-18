@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from car_api.models import Customer, Car, Reservation
 
+
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer

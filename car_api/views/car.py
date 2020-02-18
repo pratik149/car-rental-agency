@@ -1,16 +1,16 @@
+from collections import namedtuple
+from datetime import datetime
+
+from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework.decorators import parser_classes
-from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import JSONParser
-from django.http import JsonResponse
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
 
-from datetime import datetime
-from collections import namedtuple
 from car_api.models import Car, Reservation
-from car_api.serializers import CarSerializer, ReservationSerializer, CarReservationSerializer
+from car_api.serializers import (CarSerializer, ReservationSerializer, CarReservationSerializer)
 
 
 @api_view(['GET'])
@@ -55,6 +55,7 @@ def view_car_details_w_booking(request, pk):
         )
         serializer = CarReservationSerializer(carBookingDetails)
         return Response(serializer.data)
+
 
 @api_view(['POST'])
 def add_car(request):
