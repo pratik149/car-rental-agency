@@ -3,8 +3,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from car_api.models import Customer
-from car_api.serializers import CustomerSerializer
+from car_api.models import Customer, Reservation
+from car_api.serializers import CustomerSerializer, CarReservationSerializer
 
 
 @api_view(['GET'])

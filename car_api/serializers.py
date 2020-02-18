@@ -16,3 +16,7 @@ class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Reservation
         fields = ['id','customer','car','issue_date','return_date']
+
+class CarReservationSerializer(serializers.Serializer):
+    car = CarSerializer()
+    reservations = ReservationSerializer(many=True)
