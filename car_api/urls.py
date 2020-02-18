@@ -19,8 +19,8 @@ urlpatterns = [
 
     path('rent/', reservation.view_all_reservations),
     path('rent/<int:pk>/', reservation.view_reservation_details),
-    path('rent/book/', reservation.add_reservation), # API 2: Book an available car
-    path('rent/extend/<int:pk>/', reservation.edit_reservation_details), # API 5: Extend date of reservation.
+    path('rent/book/', reservation.book_car), # API 2: Book an available car
+    path('rent/extend/<int:pk>/', reservation.extend_reservation_date), # API 5: Extend date of reservation.
     path('rent/cancel/<int:pk>/', reservation.cancel_reservation), # API 6: Cancel Specific booking
 
     path('car/status_date/', car.view_all_cars_on_given_date) # API 4: Show cars with availability status on given date.

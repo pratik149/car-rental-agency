@@ -9,6 +9,9 @@ from car_api.serializers import CustomerSerializer, CarReservationSerializer
 
 @api_view(['GET'])
 def view_all_customers(request):
+    """
+    API endpoint to show all customer details.
+    """
     if request.method == 'GET':
         customers = Customer.objects.all()
         serializer = CustomerSerializer(customers, many=True)
@@ -17,6 +20,9 @@ def view_all_customers(request):
 
 @api_view(['GET'])
 def view_customer_details(request, pk):
+    """
+    API endpoint to show a specific customer details.
+    """
     try:
         customer = Customer.objects.get(pk=pk)
     except Customer.DoesNotExist:
@@ -29,6 +35,9 @@ def view_customer_details(request, pk):
 
 @api_view(['POST'])
 def add_customer(request):
+    """
+    API endpoint to add customer.
+    """
     if request.method == 'POST':
         serializer = CustomerSerializer(data=request.data)
 
@@ -40,6 +49,9 @@ def add_customer(request):
 
 @api_view(['PUT'])
 def edit_customer_details(request, pk):
+    """
+    API endpint to edit a specific customer details.
+    """
     try:
         customer = Customer.objects.get(pk=pk)
     except Customer.DoesNotExist:
@@ -56,6 +68,9 @@ def edit_customer_details(request, pk):
 
 @api_view(['DELETE'])
 def delete_customer(request, pk):
+    """
+    API endpoint for deleting customer details.
+    """
     try:
         customer = Customer.objects.get(pk=pk)
     except Customer.DoesNotExist:

@@ -15,6 +15,9 @@ from car_api.serializers import (CarSerializer, ReservationSerializer, CarReserv
 
 @api_view(['GET'])
 def home(request):
+    """
+    API endpoint for home page.
+    """
     if request.method == 'GET':
         data = [{'message':'Welcome to Car-Rental-Agency'}]
         return JsonResponse(data, safe=False)
@@ -22,6 +25,9 @@ def home(request):
 
 @api_view(['GET'])
 def view_all_cars(request):
+    """
+    API endpoint for displaying all car details.
+    """
     if request.method == 'GET':
         cars = Car.objects.all()
         serializer = CarSerializer(cars, many=True)
@@ -30,6 +36,9 @@ def view_all_cars(request):
 
 @api_view(['GET'])
 def view_car_details(request, pk):
+    """
+    API endpoint for displaying particular car details.
+    """
     try:
         car = Car.objects.get(pk=pk)
     except Car.DoesNotExist:
@@ -42,6 +51,10 @@ def view_car_details(request, pk):
 
 @api_view(['GET'])
 def view_car_details_w_booking(request, pk):
+    """
+    API endpoint for displaying specific car details with
+    its current active reservation details.
+    """
     try:
         car = Car.objects.get(pk=pk)
     except Car.DoesNotExist:
@@ -59,6 +72,10 @@ def view_car_details_w_booking(request, pk):
 
 @api_view(['POST'])
 def add_car(request):
+    """
+    API endpoint for adding new car to the system,
+    which could be used for renting.
+    """
     if request.method == 'POST':
         serializer = CarSerializer(data=request.data)
 
@@ -70,6 +87,9 @@ def add_car(request):
 
 @api_view(['PUT'])
 def edit_car_details(request, pk):
+    """
+    API endpoint for editing a particular car details.
+    """
     try:
         car = Car.objects.get(pk=pk)
     except Car.DoesNotExist:
@@ -86,6 +106,9 @@ def edit_car_details(request, pk):
 
 @api_view(['DELETE'])
 def delete_car(request, pk):
+    """
+    API endpoint for deleting car from the system.
+    """
     try:
         car = Car.objects.get(pk=pk)
     except Car.DoesNotExist:
@@ -99,6 +122,10 @@ def delete_car(request, pk):
 @api_view(['POST'])
 @parser_classes([JSONParser])
 def view_all_cars_on_given_date(request):
+    """
+    API endpoint for showing the cars with their availability status on a given date.
+    And filter the cars based on various fields.
+    """
     if request.method == 'POST':
         data = request.data
         

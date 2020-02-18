@@ -13,6 +13,9 @@ from car_api.serializers import ReservationSerializer
 
 @api_view(['GET'])
 def view_all_reservations(request):
+    """
+    API endpoint for showing all reservations in the system.
+    """
     if request.method == 'GET':
         reservations = Reservation.objects.all()
         serializer = ReservationSerializer(reservations, many=True)
@@ -21,6 +24,9 @@ def view_all_reservations(request):
 
 @api_view(['GET'])
 def view_reservation_details(request, pk):
+    """
+    API endpoint for showing a particular reservation details.
+    """
     try:
         reservation = Reservation.objects.get(pk=pk)
     except Reservation.DoesNotExist:
@@ -32,7 +38,10 @@ def view_reservation_details(request, pk):
 
 
 @api_view(['POST'])
-def add_reservation(request):
+def book_car(request):
+    """
+    API endpoint for booking an available car.
+    """
     if request.method == 'POST':
         serializer = ReservationSerializer(data=request.data)
             
@@ -50,7 +59,7 @@ def add_reservation(request):
                     content = {"message":"The selected car is not available on this date"}
                     return Response(data=json.dumps(content), status=status.HTTP_400_BAD_REQUEST)
 
-            # Check whether issue_date is not some old date, and is less equal to return_date
+            # Check whether issue_date is not older than today's date, and is less equal to return_date
             if current_date <= issue_date and issue_date <= return_date:
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -59,7 +68,12 @@ def add_reservation(request):
 
 
 @api_view(['PUT'])
-def edit_reservation_details(request, pk):
+def extend_reservation_date(request, pk):
+    """
+    API endpoint for extending the booking of the car,
+    if the car is not already reserved for the dates
+    user wants to extend the booking.
+    """
     try:
         reservation = Reservation.objects.get(pk=pk)
     except Reservation.DoesNotExist:
@@ -82,6 +96,7 @@ def edit_reservation_details(request, pk):
                     res = {"message":"Failed to extend the date. Car is not available."}
                     return Response(data=json.dumps(res), status=status.HTTP_400_BAD_REQUEST)
 
+            # Check whether issue_date is not older than today's date, and is less equal to return_date
             if current_date <= issue_date and issue_date <= return_date:
                 serializer.save()
                 return Response(serializer.data)
@@ -91,6 +106,9 @@ def edit_reservation_details(request, pk):
 
 @api_view(['DELETE'])
 def cancel_reservation(request, pk):
+    """
+    API endpoint for cancelling a specific Booking.
+    """
     try:
         reservation = Reservation.objects.get(pk=pk)
     except Reservation.DoesNotExist:
