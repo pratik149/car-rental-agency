@@ -12,7 +12,7 @@ urlpatterns = [
 
     path('car/', car.view_all_cars),
     path('car/<int:pk>/', car.view_car_details),
-    path('car/status/<int:pk>/', car.view_car_details_w_booking), # API 3: Show details of car with booking details
+    path('car/status/<int:pk>/', car.view_car_details_active_booking), # API 3: Show details of car with booking details
     path('car/add/', car.add_car), # API 1: Add new cars
     path('car/update/<int:pk>/', car.edit_car_details),
     path('car/delete/<int:pk>/', car.delete_car),

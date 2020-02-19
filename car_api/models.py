@@ -15,6 +15,7 @@ class Car(models.Model):
     model = models.CharField(max_length=50)
     seating_capacity = models.IntegerField()
     rent_per_day = models.IntegerField()
+    availability = models.BooleanField(null=True)
 
     def __str__(self):
         return self.model

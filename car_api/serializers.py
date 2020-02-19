@@ -10,7 +10,7 @@ class CustomerSerializer(serializers.ModelSerializer):
 class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
-        fields = ['id','vehicle_number','model','seating_capacity','rent_per_day']
+        fields = ['id','vehicle_number','model','seating_capacity','rent_per_day','availability']
 
 
 class ReservationSerializer(serializers.ModelSerializer):
@@ -20,4 +20,4 @@ class ReservationSerializer(serializers.ModelSerializer):
 
 class CarReservationSerializer(serializers.Serializer):
     car = CarSerializer()
-    reservations = ReservationSerializer(many=True)
+    current_active_bookings = ReservationSerializer(many=True)

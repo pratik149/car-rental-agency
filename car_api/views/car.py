@@ -1,8 +1,9 @@
 from collections import namedtuple
-from datetime import datetime
+from datetime import datetime, date
 
 from django.http import JsonResponse
 from django.shortcuts import render
+from django.db.models import Q
 from rest_framework import status
 from rest_framework.decorators import api_view, parser_classes
 from rest_framework.parsers import JSONParser
@@ -50,7 +51,7 @@ def view_car_details(request, pk):
 
 
 @api_view(['GET'])
-def view_car_details_w_booking(request, pk):
+def view_car_details_active_booking(request, pk):
     """
     API endpoint for displaying specific car details with
     its current active reservation details.
@@ -61,10 +62,17 @@ def view_car_details_w_booking(request, pk):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        CarBookingDetails = namedtuple('CarBookingDetails',('car','reservations'))
+        current_date = date.today()
+        CarBookingDetails = namedtuple('CarBookingDetails',('car','current_active_bookings'))
+
+        # Conditions for filtering only currently active bookings of a particular car
+        # suffix "__gte" stands for Greater Than or Equal to.
+        condition_1 = Q(issue_date__gte=current_date)
+        condition_2 = Q(return_date__gte=current_date)
+
         carBookingDetails = CarBookingDetails(
             car = car,
-            reservations = Reservation.objects.all().filter(car=pk),
+            current_active_bookings = Reservation.objects.filter(car=pk).filter(condition_1 | condition_2),
         )
         serializer = CarReservationSerializer(carBookingDetails)
         return Response(serializer.data)
