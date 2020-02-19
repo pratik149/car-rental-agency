@@ -64,7 +64,7 @@ https://car149.herokuapp.com/
 
 ## Other useful API endpoints:
 
-### Customer
+### 1. For Customer
 ##### View all customer
     GET method:
     Link: https://car149.herokuapp.com/customer/
@@ -82,7 +82,7 @@ https://car149.herokuapp.com/
         "phone": "9855754754"
     }
  
-### Car
+### 2. For Car
 ##### View all cars
     GET method:
     Link: https://car149.herokuapp.com/customer/
@@ -91,7 +91,7 @@ https://car149.herokuapp.com/
     Format: https://car149.herokuapp.com/car/<int:car_pk>/
     link: https://car149.herokuapp.com/car/2/
 
-### Reservation
+### 3. For Reservation
 ##### View all reservations
     GET method:
     Link: https://car149.herokuapp.com/rent/
