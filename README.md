@@ -67,35 +67,67 @@ https://car149.herokuapp.com/
 ### 1. For Customer
 ##### View all customer
     GET method:
-    Link: https://car149.herokuapp.com/customer/
+    Live link: https://car149.herokuapp.com/customer/
 ##### View particular customer details
     GET method:
     Format: https://car149.herokuapp.com/customer/<int:cust_pk>/
-    link: https://car149.herokuapp.com/customer/2/
+    Live link: https://car149.herokuapp.com/customer/2/
 ##### Add customer
     POST method:
-    link: https://car149.herokuapp.com/customer/add/
+    Live link: https://car149.herokuapp.com/customer/add/
     Expects:
     {
         "name": "Steven Holt",
         "email": "steven@gmail.com",
         "phone": "9855754754"
     }
- 
+##### Update customer details
+    PUT method:
+    Format : https://car149.herokuapp.com/customer/<int:pk>/update/
+    Live link: https://car149.herokuapp.com/customer/2/update/
+    Expects:
+    {
+        "vehicle_number": "7888",
+        "model": "Swift",
+        "seating_capacity": 5,
+        "rent_per_day": 3000
+    }
+##### Delete customer
+    DELETE method:
+    Format: https://car149.herokuapp.com/customer/<int:cust_pk>/delete/
+    Live link: https://car149.herokuapp.com/customer/4/delete/
+
+
 ### 2. For Car
 ##### View all cars
     GET method:
-    Link: https://car149.herokuapp.com/customer/
+    Live Link: https://car149.herokuapp.com/customer/
 ##### View particular car details
     GET method:
     Format: https://car149.herokuapp.com/car/<int:car_pk>/
-    link: https://car149.herokuapp.com/car/2/
+    Live link: https://car149.herokuapp.com/car/2/
+##### Update Car details
+    PUT method:
+    Format : https://car149.herokuapp.com/car/<int:pk>/update/
+    Live link: https://car149.herokuapp.com/car/2/update/
+    Expects:
+    {
+        "vehicle_number": "7888",
+        "model": "Swift",
+        "seating_capacity": 5,
+        "rent_per_day": 3000
+    }
+##### Delete car
+    DELETE method:
+    Format: https://car149.herokuapp.com/car/<int:car_pk>/delete/
+    Live link: https://car149.herokuapp.com/car/4/delete/
+
 
 ### 3. For Reservation
 ##### View all reservations
     GET method:
-    Link: https://car149.herokuapp.com/rent/
+    Live link: https://car149.herokuapp.com/rent/
 ##### View particular reservation details
     GET method:
     Format: https://car149.herokuapp.com/rent/<int:rent_pk>/
-    link: https://car149.herokuapp.com/rent/2/
+    Live link: https://car149.herokuapp.com/rent/2/
