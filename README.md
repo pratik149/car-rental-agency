@@ -101,14 +101,14 @@ https://car149.herokuapp.com/
 ### 2. For Car
 ##### View all cars
     GET method:
-    Live Link: https://car149.herokuapp.com/customer/
+    Live Link: https://car149.herokuapp.com/car/
 ##### View particular car details
     GET method:
     Format: https://car149.herokuapp.com/car/<int:car_pk>/
     Live link: https://car149.herokuapp.com/car/2/
 ##### Update Car details
     PUT method:
-    Format : https://car149.herokuapp.com/car/<int:pk>/update/
+    Format : https://car149.herokuapp.com/car/<int:car_pk>/update/
     Live link: https://car149.herokuapp.com/car/2/update/
     Expects:
     {
