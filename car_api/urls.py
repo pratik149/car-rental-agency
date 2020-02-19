@@ -7,8 +7,8 @@ urlpatterns = [
     path('customer/', customer.view_all_customers),
     path('customer/<int:pk>/', customer.view_customer_details),
     path('customer/add/', customer.add_customer),
-    path('customer/update/<int:pk>/', customer.edit_customer_details),
-    path('customer/delete/<int:pk>/', customer.delete_customer),
+    path('customer/<int:pk>/update/', customer.edit_customer_details),
+    path('customer/<int:pk>/delete/', customer.delete_customer),
 
     path('car/', car.view_all_cars),
     path('car/add/', car.add_car), # API 1: Add new cars
