@@ -19,12 +19,12 @@ def view_all_customers(request):
 
 
 @api_view(['GET'])
-def view_customer_details(request, pk):
+def view_customer_details(request, cust_pk):
     """
     API endpoint to show a specific customer details.
     """
     try:
-        customer = Customer.objects.get(pk=pk)
+        customer = Customer.objects.get(pk=cust_pk)
     except Customer.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -48,12 +48,12 @@ def add_customer(request):
 
 
 @api_view(['PUT'])
-def edit_customer_details(request, pk):
+def edit_customer_details(request, cust_pk):
     """
     API endpint to edit a specific customer details.
     """
     try:
-        customer = Customer.objects.get(pk=pk)
+        customer = Customer.objects.get(pk=cust_pk)
     except Customer.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -67,12 +67,12 @@ def edit_customer_details(request, pk):
 
 
 @api_view(['DELETE'])
-def delete_customer(request, pk):
+def delete_customer(request, cust_pk):
     """
     API endpoint for deleting customer details.
     """
     try:
-        customer = Customer.objects.get(pk=pk)
+        customer = Customer.objects.get(pk=cust_pk)
     except Customer.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 

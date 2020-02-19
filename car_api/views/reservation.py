@@ -23,12 +23,12 @@ def view_all_reservations(request):
 
 
 @api_view(['GET'])
-def view_reservation_details(request, pk):
+def view_reservation_details(request, rent_pk):
     """
     API endpoint for showing a particular reservation details.
     """
     try:
-        reservation = Reservation.objects.get(pk=pk)
+        reservation = Reservation.objects.get(pk=rent_pk)
     except Reservation.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -68,14 +68,14 @@ def book_car(request):
 
 
 @api_view(['PUT'])
-def extend_reservation_date(request, pk):
+def extend_reservation_date(request, rent_pk):
     """
     API endpoint for extending the booking of the car,
     if the car is not already reserved for the dates
     user wants to extend the booking.
     """
     try:
-        reservation = Reservation.objects.get(pk=pk)
+        reservation = Reservation.objects.get(pk=rent_pk)
     except Reservation.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -105,12 +105,12 @@ def extend_reservation_date(request, pk):
 
 
 @api_view(['DELETE'])
-def cancel_reservation(request, pk):
+def cancel_reservation(request, rent_pk):
     """
     API endpoint for cancelling a specific Booking.
     """
     try:
-        reservation = Reservation.objects.get(pk=pk)
+        reservation = Reservation.objects.get(pk=rent_pk)
     except Reservation.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 

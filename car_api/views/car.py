@@ -34,12 +34,12 @@ def view_all_cars(request):
 
 
 @api_view(['GET'])
-def view_car_details(request, pk):
+def view_car_details(request, car_pk):
     """
     API endpoint for displaying particular car details.
     """
     try:
-        car = Car.objects.get(pk=pk)
+        car = Car.objects.get(pk=car_pk)
     except Car.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -49,13 +49,13 @@ def view_car_details(request, pk):
 
 
 @api_view(['GET'])
-def view_car_details_active_booking(request, pk):
+def view_car_details_active_booking(request, car_pk):
     """
     API endpoint for displaying specific car details with
     its current active reservation details.
     """
     try:
-        car = Car.objects.get(pk=pk)
+        car = Car.objects.get(pk=car_pk)
     except Car.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -70,7 +70,7 @@ def view_car_details_active_booking(request, pk):
 
         carBookingDetails = CarBookingDetails(
             car = car,
-            current_active_bookings = Reservation.objects.filter(car=pk).filter(condition_1 | condition_2),
+            current_active_bookings = Reservation.objects.filter(car=car_pk).filter(condition_1 | condition_2),
         )
         serializer = CarDetailsReservationSerializer(carBookingDetails)
         return Response(serializer.data)
@@ -92,12 +92,12 @@ def add_car(request):
 
 
 @api_view(['PUT'])
-def edit_car_details(request, pk):
+def edit_car_details(request, car_pk):
     """
     API endpoint for editing a particular car details.
     """
     try:
-        car = Car.objects.get(pk=pk)
+        car = Car.objects.get(pk=car_pk)
     except Car.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -111,12 +111,12 @@ def edit_car_details(request, pk):
 
 
 @api_view(['DELETE'])
-def delete_car(request, pk):
+def delete_car(request, car_pk):
     """
     API endpoint for deleting car from the system.
     """
     try:
-        car = Car.objects.get(pk=pk)
+        car = Car.objects.get(pk=car_pk)
     except Car.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
