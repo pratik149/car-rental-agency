@@ -64,7 +64,32 @@ https://car149.herokuapp.com/
 
 ## Other useful API endpoints:
 
-### 1. For Customer
+### 1. For Car
+##### View all cars
+    GET method:
+    Live Link: https://car149.herokuapp.com/car/
+##### View particular car details
+    GET method:
+    Format: https://car149.herokuapp.com/car/<int:car_pk>/
+    Live link: https://car149.herokuapp.com/car/2/
+##### Update Car details
+    PUT method:
+    Format : https://car149.herokuapp.com/car/<int:car_pk>/update/
+    Live link: https://car149.herokuapp.com/car/2/update/
+    Expects:
+    {
+        "vehicle_number": "7888",
+        "model": "Swift",
+        "seating_capacity": 5,
+        "rent_per_day": 3000
+    }
+##### Delete car
+    DELETE method:
+    Format: https://car149.herokuapp.com/car/<int:car_pk>/delete/
+    Live link: https://car149.herokuapp.com/car/4/delete/
+    
+    
+### 2. For Customer
 ##### View all customer
     GET method:
     Live link: https://car149.herokuapp.com/customer/
@@ -96,31 +121,6 @@ https://car149.herokuapp.com/
     DELETE method:
     Format: https://car149.herokuapp.com/customer/<int:cust_pk>/delete/
     Live link: https://car149.herokuapp.com/customer/4/delete/
-
-
-### 2. For Car
-##### View all cars
-    GET method:
-    Live Link: https://car149.herokuapp.com/car/
-##### View particular car details
-    GET method:
-    Format: https://car149.herokuapp.com/car/<int:car_pk>/
-    Live link: https://car149.herokuapp.com/car/2/
-##### Update Car details
-    PUT method:
-    Format : https://car149.herokuapp.com/car/<int:car_pk>/update/
-    Live link: https://car149.herokuapp.com/car/2/update/
-    Expects:
-    {
-        "vehicle_number": "7888",
-        "model": "Swift",
-        "seating_capacity": 5,
-        "rent_per_day": 3000
-    }
-##### Delete car
-    DELETE method:
-    Format: https://car149.herokuapp.com/car/<int:car_pk>/delete/
-    Live link: https://car149.herokuapp.com/car/4/delete/
 
 
 ### 3. For Reservation
