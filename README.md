@@ -33,7 +33,7 @@ https://car149.herokuapp.com/
 ### Show the details of a particular car with its availability and its currently active booking details if not available.
     GET method:
     Format: https://car149.herokuapp.com/car/<int:car_pk>/active_booking/
-    Live link. https://car149.herokuapp.com/car/1/active_booking/
+    Live link: https://car149.herokuapp.com/car/1/active_booking/
       
 ### Show the cars with their availability status on a given date. This API should have the feature to filter the cars based on various fields.
     GET method:
@@ -47,7 +47,7 @@ https://car149.herokuapp.com/
     PUT method:
     Desc: Extends the return date.
     Format: https://car149.herokuapp.com/rent/<int:rent_pk>/extend/
-    Live link. https://car149.herokuapp.com/rent/3/extend/
+    Live link: https://car149.herokuapp.com/rent/3/extend/
     Expects:
     {
         "customer": 5,
