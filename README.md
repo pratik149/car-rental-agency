@@ -4,6 +4,7 @@ Task by ClinicSpots
 ## API hosted on:
 https://car149.herokuapp.com/
 
+### Note: DB schema can be found in db-schema.pdf file.
 
 ## API endpoints according to tasks:
 
