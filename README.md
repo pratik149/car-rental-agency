@@ -1,5 +1,6 @@
 # Car-Rental-Agency
-Task by ClinicSpots
+API endpoints for a Car Rental Agency built using Django REST Framework.
+An assignment given by ClinicSpots.
 
 ## API hosted on:
 https://car149.herokuapp.com/
